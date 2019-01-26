@@ -32,7 +32,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         this.movies = movies;
     }
 
-    // expect that onCreate is omly called at the beginnign due to view recycling but
+    // expect that onCreate is only called at the beginning due to view recycling but
     // onBind is called a bunch
     // existing ViewHolders are bound to new data, instead of new holders being created
 
@@ -80,6 +80,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
             // reference backdrop path if phone is in landscape
             String imageUrl = movie.getPosterPath();
 
+            // get's backdrop if in landscape
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imageUrl = movie.getBackdropPath();
             }
