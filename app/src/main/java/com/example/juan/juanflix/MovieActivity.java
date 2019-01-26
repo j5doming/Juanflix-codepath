@@ -37,8 +37,10 @@ public class MovieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
+
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
         movies = new ArrayList<>();
+
         final MoviesAdapter adapter = new MoviesAdapter(this, movies);
         rvMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rvMovies.setAdapter(adapter);
@@ -47,6 +49,7 @@ public class MovieActivity extends AppCompatActivity {
         client.get(MOVIE_URL, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
                 try {
                     JSONArray movieJSONArray = response.getJSONArray("results");
                     movies.addAll(Movie.fromJSONArray(movieJSONArray));
